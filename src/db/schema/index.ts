@@ -6,3 +6,8 @@ export const db = drizzle({
   casing: 'snake_case'
 })
 
+export { Family } from './family'
+export { Invoce } from './invoice'
+export { ShoppingList } from './shopping_list'
+export { ShoppingListItem } from './shopping_list_item'
+
