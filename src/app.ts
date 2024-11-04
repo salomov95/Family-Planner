@@ -1,9 +1,4 @@
-import { fastify } from 'fastify'
-import { Router } from './routes'
-
-const server = fastify()
-
-server.register(Router)
+import { server } from './server'
 
 server.listen({ port: 3000 }, (err, address) => {
   if (err) {
