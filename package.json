@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx src/server.ts",
+    "dev": "tsx src/app.ts",
     "seed": "tsx src/db/seed.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node index.js"
