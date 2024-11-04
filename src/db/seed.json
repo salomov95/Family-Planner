@@ -1,0 +1,35 @@
+{
+  "houses": [
+    {
+      "house": "Stark",
+      "email": "stark_the_house@lol.com"
+    },
+    {
+      "house": "Sterco",
+      "email": "sterco_the_house@lol.com"
+    }
+  ],
+  "invoices": [
+    {
+      "issuer": "401 - Banco do Brasil",
+      "issued_date": "2024-05-10T00:00:00.000z",
+      "due_date": "2024-06-11T00:00:00.000z",
+      "amount": 425.67,
+      "invoice_code": "19912552229495999111449"
+    }
+  ],
+  "shopping_list": [
+    {
+      "product": "Salame",
+      "quantity": 300
+    },
+    {
+      "product": "Shampoo",
+      "quantity": 1
+    },
+    {
+      "product": "Queijo",
+      "quantity": 300
+    }
+  ]
+}
