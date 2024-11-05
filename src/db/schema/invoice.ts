@@ -2,8 +2,9 @@ import { createId } from '@paralleldrive/cuid2'
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 import { Family } from './family'
+import { relations } from 'drizzle-orm'
 
-export const Invoce = sqliteTable('t_invoice', {
+export const Invoice = sqliteTable('t_invoice', {
   id: text().primaryKey().$defaultFn(()=>createId()),
   type: text().notNull().default('BILL'),
   dueDate: integer('due_date').notNull(),
@@ -14,3 +15,10 @@ export const Invoce = sqliteTable('t_invoice', {
   familyId: text('family_id').notNull().references(()=>Family.id),
   status: text().notNull().default('UNPAID')
 })
+
+export const invoiceRelations = relations(Invoice, ({ one }) => ({
+  family: one(Family, {
+     fields: [Invoice.familyId],
+     references: [Family.id]
+  })
+}))

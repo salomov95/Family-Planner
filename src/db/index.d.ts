@@ -1,6 +1,3 @@
-import { Client } from "@libsql/client/.";
-import { LibSQLDatabase } from "drizzle-orm/libsql";
+import { db } from "./schema";
 
-export type Database = LibSQLDatabase<Record<string, never>> & {
-  $client:Client;
-}
+export type Database = typeof db

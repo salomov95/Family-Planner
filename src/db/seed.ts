@@ -1,6 +1,6 @@
 import { db } from './schema'
  import { Family } from './schema/family'
- import { Invoce } from './schema/invoice'
+ import { Invoice } from './schema/invoice'
 import { ShoppingList } from './schema/shopping_list'
 import { ShoppingListItem } from './schema/shopping_list_item'
 import { houses,
@@ -30,7 +30,7 @@ async function seed() {
     }
 
     for (let i in invoices) {
-      await db.insert(Invoce).values({
+      await db.insert(Invoice).values({
         amount: invoices[i].amount/10,
         issuer: invoices[i].issuer,
         issuedDate: new Date(invoices[i].issued_date)

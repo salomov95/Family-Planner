@@ -11,6 +11,6 @@ export const ShoppingList = sqliteTable('t_shopping_list', {
     .default(0)
 })
 
-export const shoppingListItems = relations(ShoppingList, ({ many })=>({
+export const shoppingListRelations = relations(ShoppingList, ({ many })=>({
   items: many(ShoppingListItem)
 }))

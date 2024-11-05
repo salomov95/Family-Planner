@@ -23,29 +23,39 @@ export class FamilyRepository {
          ...dto,
          shoppingListId
       })
-      .catch(()=>{
-         throw Error(`Failed registering family <${dto.house}>`)
+      .catch((err)=>{
+         throw Error(`Failed registering family <${dto.house}>` + err)
       })
 
     return { ok: true }
   }
 
   public async find(id: string) {
-    const family = await this.db.select()
-      .from(Family)
-      .where(eq(Family.id, id))
-      .get()
-      .catch(()=>{ throw Error('Not such family') })
-    
+    const family = await this.db.query.Family
+      .findFirst({
+        where: eq(Family.id, id),
+        with: {
+          invoices: true,
+          shoppingList: {
+            with: {
+              items: true
+            }
+          }
+        }
+      })
+      .catch((err)=>{
+        throw Error('Not such family' + err)
+      })
+
     return family
   }
 
   public async findByEmail(email: string) {
-    const family = await this.db.select()
-      .from(Family)
-      .where(eq(Family.email, email))
-      .get()
-      .catch(()=>{ throw Error('Not such family') })
+    const family = await this.db.query.Family
+      .findFirst({ where: eq(Family.email, email) })
+      .catch((err)=>{
+        throw Error('Not such family' + err)
+      })
 
     return family
   }

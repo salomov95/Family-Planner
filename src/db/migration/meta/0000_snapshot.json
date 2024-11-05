@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "220de2f6-7826-472c-8e64-024c53b7fcf6",
+  "id": "182cd50c-a3e0-4d55-9988-9fe05002e8d0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "t_family": {
@@ -12,8 +12,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "'c29f5748-cf59-42a0-ae4f-523358d0ed34'"
+          "autoincrement": false
         },
         "house": {
           "name": "house",
@@ -81,8 +80,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "'37b3f666-c28f-477e-a194-9e6764c39aa5'"
+          "autoincrement": false
         },
         "type": {
           "name": "type",
@@ -143,15 +141,7 @@
           "default": "'UNPAID'"
         }
       },
-      "indexes": {
-        "t_invoice_type_unique": {
-          "name": "t_invoice_type_unique",
-          "columns": [
-            "type"
-          ],
-          "isUnique": true
-        }
-      },
+      "indexes": {},
       "foreignKeys": {
         "t_invoice_family_id_t_family_id_fk": {
           "name": "t_invoice_family_id_t_family_id_fk",
@@ -179,8 +169,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "'f915dc61-42d0-407e-8af9-18e4d1297f4f'"
+          "autoincrement": false
         },
         "max_amount_to_spend": {
           "name": "max_amount_to_spend",
@@ -205,8 +194,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "'205bacd2-3186-46c4-8fbb-666e9c5501cd'"
+          "autoincrement": false
         },
         "shopping_list_id": {
           "name": "shopping_list_id",
