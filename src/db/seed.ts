@@ -1,24 +1,24 @@
 import { db } from './schema'
- import { Family } from './schema/family'
+ import { User } from './schema/user'
  import { Invoice } from './schema/invoice'
 import { ShoppingList } from './schema/shopping_list'
 import { ShoppingListItem } from './schema/shopping_list_item'
-import { houses,
-   shopping_list, invoices
+import {
+   users, shopping_list, invoices
 } from './seed.json'
 
 async function seed() {  
-  for (let h in houses) {
+  for (let u in users) {
     const list = (await db.insert(ShoppingList).values({
       maxAmountToSpend: 30000
     }).returning({ insertedId: ShoppingList.id }))[0]
 
-    const family = (await db.insert(Family).values({
-      house: houses[h].house,
-      email: houses[h].email,
+    const user = (await db.insert(User).values({
+      username: users[u].username,
+      email: users[u].email,
       passkey: '12345',
       shoppingListId: list.insertedId
-    }).returning({ insertedId: Family.id }))[0]
+    }).returning({ insertedId: User.id }))[0]
 
 
     for (let p in shopping_list) {
@@ -38,7 +38,7 @@ async function seed() {
         dueDate: new Date(invoices[i].due_date)
           .getTime(),
         invoiceCode: invoices[i].invoice_code,
-        familyId: family.insertedId
+        userId: user.insertedId
       })
     }
   }

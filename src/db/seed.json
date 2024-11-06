@@ -1,11 +1,11 @@
 {
-  "houses": [
+  "users": [
     {
-      "house": "Stark",
+      "username": "Stark",
       "email": "stark_the_house@lol.com"
     },
     {
-      "house": "Sterco",
+      "username": "Sterco",
       "email": "sterco_the_house@lol.com"
     }
   ],
