@@ -1,5 +1,5 @@
-import { UserRegistryDTO } from './dto/u_registry_dto'
-import { UserLoginDTO } from './dto/u_login_dto'
+import { UserRegistryDTO } from './dto/u_registry_dto';
+import { UserLoginDTO } from './dto/u_login_dto';
 import { UserRepository } from '../../db/repository/user';
 
 export class UserService {
