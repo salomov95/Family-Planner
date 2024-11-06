@@ -1,14 +1,14 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
-import { FamilyRepository } from '../../db/repository/family';
-import { FamilyService } from './f_service'
-import { FamilyRegistryDTO } from './dto/f_registry_dto'
-import { FamilyLoginDTO } from './dto/f_login_dto';
+import { UserRepository } from '../../db/repository/user';
+import { UserService } from './u_service'
+import { UserRegistryDTO } from './dto/u_registry_dto'
+import { UserLoginDTO } from './dto/u_login_dto';
 
-export function FamilyController (fastify: FastifyInstance) {
-  const familyService = new FamilyService(
-    new FamilyRepository())
+export function UserController (fastify: FastifyInstance) {
+  const userService = new UserService(
+    new UserRepository())
 
-  fastify.post('/family/register', async (
+  fastify.post('/users', async (
     request:FastifyRequest,
     reply: FastifyReply)=>{
 
@@ -19,14 +19,14 @@ export function FamilyController (fastify: FastifyInstance) {
       })
     }
 
-    const dto = request.body as FamilyRegistryDTO
-    const result = await familyService.register(dto)
+    const dto = request.body as UserRegistryDTO
+    const result = await userService.register(dto)
       .catch((err)=>reply.code(400).send({ err }))
 
     reply.code(201).send(result)
   })
 
-  fastify.post('/family/login', async (
+  fastify.post('/users/login', async (
     request:FastifyRequest,
     reply: FastifyReply)=>{
       if (!request.body) {
@@ -36,21 +36,21 @@ export function FamilyController (fastify: FastifyInstance) {
         })
       }
 
-      const dto = request.body as FamilyLoginDTO
-      const result = await familyService.login(dto)
+      const dto = request.body as UserLoginDTO
+      const result = await userService.login(dto)
         .catch((err)=>reply.code(401).send({ err }))
 
       reply.code(200).send(result)
   })
 
-  fastify.get('/family/:id', async (
+  fastify.get('/users/:id', async (
     request:FastifyRequest,
     reply: FastifyReply)=>{
       const params = request.params as any
-      const family = await familyService
+      const user = await userService
         .getInfo(`${params['id']}`)
         .catch((err)=>reply.code(404).send({ err }))
 
-      reply.send({ family })
+      reply.send({ user })
   })
 }

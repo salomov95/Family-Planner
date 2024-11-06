@@ -1,8 +1,8 @@
 import { fastify } from 'fastify'
-import { FamilyController } from '../domain/family/index.ts'
+import { UserController } from '../domain/user'
 
 const server = fastify()
 
-server.register(FamilyController)
+server.register(UserController)
 
 export { server }

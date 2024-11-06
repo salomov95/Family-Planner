@@ -1,4 +1,4 @@
-export interface FamilyLoginDTO {
+export interface UserLoginDTO {
   email: string;
   passkey: string
 }
